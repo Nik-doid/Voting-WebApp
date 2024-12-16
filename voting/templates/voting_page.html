@@ -61,7 +61,7 @@
     <div class="player-container">
         <!-- Current Player -->
         <div class="player-card">
-            <form action="{% url 'vote_player' current_player.id challenger.id %}" method="post">
+            <form action="{% url 'vote_player' current_player.id challenger.id %}" method="post" class="vote-form">
                 {% csrf_token %}
                 <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                     <img src="{{ current_player.photo_url }}" alt="{{ current_player.name }}" width="200">
@@ -72,7 +72,7 @@
 
         <!-- Challenger -->
         <div class="player-card">
-            <form action="{% url 'vote_player' challenger.id current_player.id %}" method="post">
+            <form action="{% url 'vote_player' challenger.id current_player.id %}" method="post" class="vote-form">
                 {% csrf_token %}
                 <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                     <img src="{{ challenger.photo_url }}" alt="{{ challenger.name }}" width="200">
@@ -81,5 +81,21 @@
             <h2>{{ challenger.name }}</h2>
         </div>
     </div>
+
+    <!-- Audio file for click sound -->
+    <audio id="click-sound" src="a.mp3"></audio>
+
+    <script>
+        // Add event listener to all vote forms
+        document.querySelectorAll('.vote-form').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                // Play click sound
+                const clickSound = document.getElementById('click-sound');
+                if (clickSound) {
+                    clickSound.play();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

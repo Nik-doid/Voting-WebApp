@@ -4,9 +4,11 @@ from django.http import HttpResponse
 import random
 
 def home_page(request):
-   
     players = Player.objects.all().order_by('-votes', 'name')
     
+    # Make sure ratings are capped at 5
+    for player in players:
+        player.rating = min(player.rating, 5)
     
     def build_tree(players):
         tree = []

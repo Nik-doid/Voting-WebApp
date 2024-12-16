@@ -100,7 +100,7 @@
                 <img src="{{ player.photo_url }}" alt="{{ player.name }}">
                 <strong>{{ player.name }}</strong>
                 <p>({{ player.real_name }})</p>
-                <p>Rating: {{ player.rating|floatformat:1 }} / 5</p>
+                <p>Rating: {{ player.rating|floatformat:1 }} / 100</p>  <!-- Rating from 0 to 100 -->
             </div>
             {% endfor %}
         </div>

@@ -6,9 +6,9 @@ import random
 def home_page(request):
     players = Player.objects.all().order_by('-votes', 'name')
     
-    # Make sure ratings are capped at 5
+    # Print player ratings for debugging
     for player in players:
-        player.rating = min(player.rating, 5)
+        print(f"Player: {player.name}, Rating: {player.rating}")  # Reading the rating, not setting it
     
     def build_tree(players):
         tree = []
@@ -25,6 +25,7 @@ def home_page(request):
 
     players_tree = build_tree(list(players))
     return render(request, 'home_page.html', {'players_tree': players_tree})
+
 
 def voting_page(request):
     if 'current_player' not in request.session:

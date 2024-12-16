@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote for the Best Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #ffa500; /* Orange text */
+        }
+
+        .player-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 0;
+        }
+
+        .player-card {
+            text-align: center;
+            background: #1a1a1a; /* Dark gray card background */
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.6); /* Orange shadow */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .player-card:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 8px 16px rgba(255, 165, 0, 0.9); /* Brighter shadow on hover */
+        }
+
+        .player-card img {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .player-card img:hover {
+            transform: scale(1.1); /* Zoom effect on image hover */
+        }
+
+        .player-card h2 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #ffa500; /* Orange name text */
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose the Better Player</h1>
+    <div class="player-container">
+        <!-- Current Player -->
+        <div class="player-card">
+            <form action="{% url 'vote_player' current_player.id challenger.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
+                    <img src="{{ current_player.photo_url }}" alt="{{ current_player.name }}" width="200">
+                </button>
+            </form>
+            <h2>{{ current_player.name }}</h2>
+        </div>
+
+        <!-- Challenger -->
+        <div class="player-card">
+            <form action="{% url 'vote_player' challenger.id current_player.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
+                    <img src="{{ challenger.photo_url }}" alt="{{ challenger.name }}" width="200">
+                </button>
+            </form>
+            <h2>{{ challenger.name }}</h2>
+        </div>
+    </div>
+</body>
+</html>

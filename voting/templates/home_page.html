@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Best Player Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .player-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .level {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .player {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 20px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 150px;
+        }
+
+        .player:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .player img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .player strong {
+            display: block;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .player p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .player p:last-child {
+            font-weight: bold;
+            color: #333;
+        }
+
+        a {
+            display: block;
+            width: 150px;
+            margin: 30px auto;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Best Players</h1>
+    <div class="player-tree">
+        {% for level in players_tree %}
+        <div class="level">
+            {% for player in level %}
+            <div class="player">
+                <img src="{{ player.photo_url }}" alt="{{ player.name }}">
+                <strong>{{ player.name }}</strong>
+                <p>({{ player.real_name }})</p>
+                <p>Rating: {{ player.rating|floatformat:1 }} / 5</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'voting_page' %}">Start Voting</a>
+</body>
+</html>

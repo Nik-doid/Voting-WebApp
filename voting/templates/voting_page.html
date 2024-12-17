@@ -84,10 +84,40 @@
                 font-size: 16px;
             }
         }
+
+        .audio-controls {
+            text-align: center;
+            margin: 20px;
+        }
+
+        button {
+            background-color: #ffa500;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ff8c00;
+        }
     </style>
 </head>
 <body>
     <h1>Choose the Better Player</h1>
+
+     <!-- Background Audio -->
+     <audio id="background-music" autoplay loop>
+        <source src="../static/audio/b.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Stop Button -->
+    <div class="audio-controls">
+        <button id="stop-button">Stop Music</button>
+    </div>
     <div class="player-container">
         <!-- Current Player -->
         <div class="player-card">
@@ -113,7 +143,7 @@
     </div>
 
     <!-- Audio file for click sound -->
-    <audio id="click-sound" src="a.mp3"></audio>
+    <audio id="click-sound" src="../static/audio/a.mp3"></audio>
 
     <script>
         // Add event listener to all vote forms
@@ -125,6 +155,15 @@
                     clickSound.play();
                 }
             });
+        });
+
+        const backgroundMusic = document.getElementById('background-music');
+        const stopButton = document.getElementById('stop-button');
+
+        // Add event listener to stop the music
+        stopButton.addEventListener('click', function () {
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0; // Reset to the start
         });
     </script>
 </body>

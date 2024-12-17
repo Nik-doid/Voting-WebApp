@@ -132,7 +132,7 @@
     </style>
 </head>
 <body>
-    <h1>Best Players</h1>
+    <h1> Your Best Players</h1>
     <div class="player-tree">
         {% for level in players_tree %}
         <div class="level">
@@ -141,7 +141,7 @@
                 <img src="{{ player.photo_url }}" alt="{{ player.name }}">
                 <strong>{{ player.name }}</strong>
                 <p>({{ player.real_name }})</p>
-                <p>Rating: {{ player.rating|floatformat:1 }} / 100</p> <!-- Rating from 0 to 100 -->
+                <p>Rating: {{ player.rating|floatformat:1 }} </p>
             </div>
             {% endfor %}
         </div>

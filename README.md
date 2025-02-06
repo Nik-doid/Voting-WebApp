@@ -11,9 +11,9 @@ A web application that allows users to vote on their favorite Valorant agents, m
 - User-friendly interface.  
 
 ## 🛠️ Technologies Used  
-- **Frontend:** React.js  
-- **Backend:** Node.js / Express.js (if applicable)  
-- **Database:** MongoDB / Firebase (if applicable)  
+- **Frontend:** HTML/CSS
+- **Backend:** Django
+- **Database:** PostGres  
 - **Deployment:** Vercel  
 
 

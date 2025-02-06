@@ -1,6 +1,6 @@
 # Valorant Voting
 
-A web application that allows users to vote on their favorite Valorant agents, maps, or other game-related topics.
+A web application that allows users to vote on their favorite players.
 
 ## 🚀 Live Demo  
 [Click here to view the app](https://voting-six-blue.vercel.app/)

@@ -6,7 +6,7 @@ A web application that allows users to vote on their favorite players.
 [Click here to view the app](https://voting-six-blue.vercel.app/)
 
 ## 📌 Features  
-- Vote for your favorite Valorant agents, maps, or other categories.  
+- Vote for your favorite Valorant player. 
 - View real-time voting results.  
 - User-friendly interface.  
 
